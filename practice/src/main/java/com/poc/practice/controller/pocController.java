@@ -21,13 +21,14 @@ public class pocController {
     @GetMapping("/status")
     @TrackExecutionTime
     public String getStatus(@RequestParam String name){
-        log.info("API check");
+        log.info("API check status using param");
         return name;
     }
 
     @PostMapping(value = "/readFile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = "application/json")
     public List<FileData> fetchData(@RequestParam(value="files") MultipartFile files) throws IOException {
     List<FileData> res=new ArrayList<>();
+        
         BufferedReader br=null;
     try{
         br=new BufferedReader(new InputStreamReader(files.getInputStream()));
